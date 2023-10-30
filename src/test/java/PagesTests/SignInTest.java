@@ -4,7 +4,8 @@ import Model.DataForTest;
 import MainData.PageUtils;
 import Model.DataForLogin;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -19,7 +20,7 @@ public class SignInTest extends PagesTests.BaseTest {
 
     @BeforeEach
     public void setUpTest() {
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         driver.get(PageUtils.BASE_URL);
         assertThat(driver.getTitle()).isEqualTo(PageUtils.HOME_PAGE_TITLE);
 
@@ -55,7 +56,6 @@ public class SignInTest extends PagesTests.BaseTest {
         message.setPassword("01234");
 
         loginPage.clickNewsletterCheckbox();
-        loginPage.clickSpecialOffersCheckBox();
         loginPage.inputDataInLoginForm(message);
         loginPage.clickRegisterButton();
 

@@ -5,7 +5,7 @@ import Model.DataForContactUsForm;
 import PagesObjects.ContactUsFormPage;
 import PagesObjects.TopMenuPage;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.FileNotFoundException;
 
@@ -20,7 +20,7 @@ public class ContactUsTest extends PagesTests.BaseTest {
 
     @BeforeEach
     public void setUpTest() {
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         driver.get(PageUtils.BASE_URL);
         assertThat(driver.getTitle()).isEqualTo(PageUtils.HOME_PAGE_TITLE);
 

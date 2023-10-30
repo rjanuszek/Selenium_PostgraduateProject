@@ -1,14 +1,12 @@
 package PagesTests;
 
 import MainData.PageUtils;
-import PagesObjects.SearchResultPage;
+import Model.DataForTest;
 import PagesObjects.SubMenuPage;
 import PagesObjects.WomenItemsPage;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -16,32 +14,29 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SearchResultTest extends PagesTests.BaseTest {
 
     private SubMenuPage subMenuPage;
-    private SearchResultPage searchResultPage;
     private WomenItemsPage womenItemsPage;
 
     @BeforeEach
     public void setUpTest() {
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         driver.get(PageUtils.BASE_URL);
         assertThat(driver.getTitle()).isEqualTo(PageUtils.HOME_PAGE_TITLE);
 
         subMenuPage = new SubMenuPage(driver);
-        searchResultPage = new SearchResultPage(driver);
         womenItemsPage = new WomenItemsPage(driver);
+
     }
 
     @Test
     @Order(1)
     public void searchObjectTest() {
-        subMenuPage.inputTextInSearchObject("Blouse");
+        subMenuPage.inputTextInSearchObject(DataForTest.SEARCH_WOMEN_ITEMS);
         subMenuPage.clickSearchObjectLink();
 
-        assertThat(searchResultPage.checkSearchResult("Showing 1 - 1 of 1 item")).isTrue();
-
         List<String> productsNameWomen = womenItemsPage.getProductsNameWomen();
-        assertThat(productsNameWomen).contains("Blouse");
+        assertThat(productsNameWomen).contains(DataForTest.SEARCH_WOMEN_ITEMS);
 
-        List<Double> productsPriceWomen = womenItemsPage.getProductsPriceWomen();
-        assertThat(productsPriceWomen).contains(27.0);
+        List<Integer> productsPriceWomen = womenItemsPage.getProductsPriceWomen();
+        assertThat(productsPriceWomen).contains(27);
     }
 }

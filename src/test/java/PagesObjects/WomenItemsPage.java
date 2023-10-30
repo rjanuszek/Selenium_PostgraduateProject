@@ -19,11 +19,11 @@ public class WomenItemsPage extends PagesObjects.BasePage {
     @FindBy(css = ".right-block .product-name")
     List<WebElement> productsNameWomen;
 
-    public List<Double> getProductsPriceWomen() {
+    public List<Integer> getProductsPriceWomen() {
         return productsPriceWomen.stream()
                 .map(el -> el.getText().replace("$", ""))
                 .map(String::trim)
-                .map(Double::parseDouble)
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 

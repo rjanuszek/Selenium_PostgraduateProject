@@ -40,8 +40,8 @@ public class LoginPage extends PagesObjects.BasePage {
     @FindBy(id = "newsletter")
     WebElement newsletterCheckbox;
 
-    @FindBy(id = "optin")
-    WebElement specialOffersCheckBox;
+//    @FindBy(id = "optin")
+//    WebElement specialOffersCheckBox;
 
     @FindBy(id = "submitAccount")
     WebElement registerButton;
@@ -56,10 +56,6 @@ public class LoginPage extends PagesObjects.BasePage {
 
     public void clickNewsletterCheckbox() {
         newsletterCheckbox.click();
-    }
-
-    public void clickSpecialOffersCheckBox() {
-        specialOffersCheckBox.click();
     }
 
     public void clickRegisterButton() {

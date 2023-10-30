@@ -4,7 +4,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
-
 import java.time.Duration;
 
 public class BaseTest {
@@ -13,7 +12,7 @@ public class BaseTest {
 
     @BeforeAll
     public static void setUpClass() {
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
     }
 
     @AfterEach

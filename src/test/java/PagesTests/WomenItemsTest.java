@@ -4,7 +4,7 @@ import MainData.PageUtils;
 import PagesObjects.CategoriesPage;
 import PagesObjects.WomenItemsPage;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +20,7 @@ public class WomenItemsTest extends PagesTests.BaseTest {
 
     @BeforeEach
     public void setUpTest() {
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         driver.get(PageUtils.BASE_URL);
         assertThat(driver.getTitle()).isEqualTo(PageUtils.HOME_PAGE_TITLE);
 
@@ -33,8 +33,8 @@ public class WomenItemsTest extends PagesTests.BaseTest {
     public void shouldSeeWomenItemsOnPageByPrice() {
         categoriesPage.clinkOnWomenLink();
         setTimeouts();
-        List<Double> productsPriceWomen = womenItemsPage.getProductsPriceWomen();
-        List<Double> listOfPriceZero = productsPriceWomen.stream()
+        List<Integer> productsPriceWomen = womenItemsPage.getProductsPriceWomen();
+        List<Integer> listOfPriceZero = productsPriceWomen.stream()
                 .filter(el -> el <= 0)
                 .collect(Collectors.toList());
 
